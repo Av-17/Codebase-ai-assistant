@@ -6,20 +6,11 @@ from typing import TypedDict, List, Optional
 from dotenv import load_dotenv
 from langchain.docstore.document import Document
 from load import chunk_splitter, fetch_github
-from langgraph.checkpoint.sqlite import SqliteSaver
-import sqlite3
 import os
 import streamlit as st
 os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
 # Load environment variables
 load_dotenv()
-
-# SQLite setup
-try:
-    memory = sqlite3.connect('heckpoints.sqlite', check_same_thread=False)
-    sqcheckpointer = SqliteSaver(memory)
-except sqlite3.Error as e:
-    raise RuntimeError(f"SQLite initialization failed: {e}")
 
 # LLM initialization
 try:
@@ -122,6 +113,6 @@ graph.add_edge("answer_node", END)
 graph.set_entry_point("retriever_node")
 
 try:
-    app = graph.compile(checkpointer=sqcheckpointer)
+    app = graph.compile()
 except Exception as e:
     raise RuntimeError(f"LangGraph compilation failed: {e}")

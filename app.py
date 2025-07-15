@@ -106,7 +106,6 @@ if st.button("✨ AI Response"):
             with st.spinner("💭 Thinking..."):
                 response = app.invoke(
                     {"question": question, "chunks": st.session_state.chunks},
-                    config={"configurable": {"thread_id": "user123-session1"}}
                 )
                 st.subheader("💡 AI Response")
                 st.info(response.get("answer", "No answer returned."))
