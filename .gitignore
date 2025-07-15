@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+myenv/
+venv/
+.env/
+
+# Environment variables
+.env
+.streamlit/secrets.toml
+
+# SQLite DB / LangGraph checkpoints
+*.sqlite
+*.db
+
+# VS Code and system-specific files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# Streamlit cache (optional)
+.streamlit/
