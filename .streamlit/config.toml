@@ -1,0 +1,6 @@
+[server]
+headless = true
+
+[general]
+# Replace this with the correct filename
+mainPage = "login.py"
