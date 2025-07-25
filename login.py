@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_js_eval import streamlit_js_eval
+
 
 st.set_page_config(page_title="Login", layout="centered",initial_sidebar_state="collapsed")
 
@@ -33,5 +33,9 @@ elif "access_token" in st.session_state:
     st.switch_page("pages/bot.py")
 
 else:
-    if st.button("👉 Click here to Login with GitHub"):
-        streamlit_js_eval(js_expressions="window.location.href = 'https://backend-for-codebase-1.onrender.com/login'")
+    if st.button("👉 Login with GitHub"):
+        st.markdown(f"""
+        <meta http-equiv="refresh" content="0; url=https://backend-for-codebase-1.onrender.com/login" />
+    """, unsafe_allow_html=True)
+
+
