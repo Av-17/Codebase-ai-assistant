@@ -39,5 +39,5 @@ else:
         """<script>
         window.location.href = "https://backend-for-codebase-1.onrender.com/login";
         </script>""",
-        unsafe_allow_html=True
+        unsafe_allow_html=False
     )
