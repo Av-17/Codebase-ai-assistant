@@ -1,4 +1,6 @@
 import streamlit as st
+from streamlit_js_eval import streamlit_js_eval
+
 
 st.set_page_config(page_title="Login", layout="centered",initial_sidebar_state="collapsed")
 
@@ -33,10 +35,7 @@ elif "access_token" in st.session_state:
 
 else:
     st.title("🔐 Login")
-    login_clicked = st.button("Login with GitHub")
-
 # Perform redirect using JS if clicked
-    if login_clicked:
-        st.markdown("""
-            <meta http-equiv="refresh" content="0; url='https://backend-for-codebase-1.onrender.com/login'" />
-        """, unsafe_allow_html=True)
+    
+    if st.button("Login with GitHub"):
+        streamlit_js_eval(js_expressions="window.location.replace('https://backend-for-codebase-1.onrender.com/login')", key="github-redirect")
