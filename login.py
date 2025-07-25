@@ -33,8 +33,5 @@ elif "access_token" in st.session_state:
 
 else:
     st.title("🔐 Login")
-    st.markdown("""
-    <a href="https://backend-for-codebase-1.onrender.com/login" target="_self">
-        <button style='padding:10px;font-size:16px;'>Login with GitHub</button>
-    </a>
-    """, unsafe_allow_html=True)
+    if st.button("Login with GitHub"):
+        st.experimental_redirect("https://backend-for-codebase-1.onrender.com/login")
