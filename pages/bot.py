@@ -25,6 +25,7 @@ if "access_token" not in st.session_state or "username" not in st.session_state:
 
 st.write(f"Welcome, **{st.session_state['username']}**")
 st.page_link("pages/logout.py", label="🚪 Logout")
+st.info("Plzz dont repload the page it will get redirect to login page again")
 st.session_state.setdefault("repo_name", "")
 st.session_state.setdefault("chunks", None)
 
@@ -94,7 +95,9 @@ with col1:
 with col2:
     if st.button("🔄 Refresh"):
         st.cache_resource.clear()
-        st.session_state.clear()
+        for key in ["repo_name", "chunks"]:
+            if key in st.session_state:
+                del st.session_state[key]
         st.rerun()
 
 
