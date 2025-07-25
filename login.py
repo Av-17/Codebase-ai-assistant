@@ -33,9 +33,9 @@ elif "access_token" in st.session_state:
     st.switch_page("pages/bot.py")
 
 else:
-    if st.button("👉 Login with GitHub"):
-        st.markdown(f"""
-        <meta http-equiv="refresh" content="0; url=https://backend-for-codebase-1.onrender.com/login" />
-    """, unsafe_allow_html=True)
-
-
+    st.title("🔐 Login")
+st.markdown("""
+<a href="https://backend-for-codebase-1.onrender.com/login" target="_self">
+    👉 Click here to Login with GitHub
+</a>
+""", unsafe_allow_html=True)
