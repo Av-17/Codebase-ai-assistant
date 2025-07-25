@@ -32,6 +32,7 @@ elif "access_token" in st.session_state:
     st.switch_page("pages/bot.py")
 
 else:
+    st.title("🔐 Login")
     login_clicked = st.button("Login with GitHub")
 
 # Perform redirect using JS if clicked
