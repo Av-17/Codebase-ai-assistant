@@ -34,8 +34,8 @@ elif "access_token" in st.session_state:
 
 else:
     st.title("🔐 Login")
-st.markdown("""
-<a href="https://backend-for-codebase-1.onrender.com/login" target="_self">
-    👉 Click here to Login with GitHub
-</a>
-""", unsafe_allow_html=True)
+    st.markdown("""
+    <a href="https://backend-for-codebase-1.onrender.com/login" target="_self">
+        👉 Click here to Login with GitHub
+    </a>
+    """, unsafe_allow_html=True)
