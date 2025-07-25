@@ -5,7 +5,6 @@ from langchain_core.messages import HumanMessage
 from typing import TypedDict, List, Optional
 from dotenv import load_dotenv
 from langchain.docstore.document import Document
-from load import chunk_splitter, fetch_github
 import os
 import streamlit as st
 os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
