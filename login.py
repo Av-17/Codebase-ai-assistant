@@ -32,6 +32,10 @@ elif "access_token" in st.session_state:
     st.switch_page("pages/bot.py")
 
 else:
-    st.title("🔐 Login")
-    if st.button("Login with GitHub"):
-        st.experimental_redirect("https://backend-for-codebase-1.onrender.com/login")
+    login_clicked = st.button("Login with GitHub")
+
+# Perform redirect using JS if clicked
+    if login_clicked:
+        st.markdown("""
+            <meta http-equiv="refresh" content="0; url='https://backend-for-codebase-1.onrender.com/login'" />
+        """, unsafe_allow_html=True)
