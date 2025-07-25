@@ -38,4 +38,7 @@ else:
 # Perform redirect using JS if clicked
     
     if st.button("Login with GitHub"):
-        streamlit_js_eval(js_expressions="window.location.replace('https://backend-for-codebase-1.onrender.com/login')", key="github-redirect")
+        streamlit_js_eval(
+            js_expressions="window.top.location.href='https://backend-for-codebase-1.onrender.com/login'",
+            key="github-redirect"
+        )
