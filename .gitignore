@@ -26,5 +26,5 @@ Thumbs.db
 *.bak
 
 # Streamlit cache (optional)
-.streamlit/
+
 demo_backend/
