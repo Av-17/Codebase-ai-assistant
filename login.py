@@ -35,10 +35,8 @@ elif "access_token" in st.session_state:
 
 else:
     st.title("🔐 Login")
-# Perform redirect using JS if clicked
-    
-    if st.button("Login with GitHub"):
-        streamlit_js_eval(
-            js_expressions="window.top.location.href='https://backend-for-codebase-1.onrender.com/login'",
-            key="github-redirect"
-        )
+st.markdown("""
+<a href="https://backend-for-codebase-1.onrender.com/login" target="_blank">
+    👉 Click here to Login with GitHub
+</a>
+""", unsafe_allow_html=True)
