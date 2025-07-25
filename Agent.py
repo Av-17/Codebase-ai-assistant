@@ -81,22 +81,29 @@ def answer_node(state: AgentState) -> AgentState:
             for doc in docs)
 
         prompt = f"""
-        You are a helpful coding assistant. Use the following context to answer the user's question.
+You are an expert AI assistant designed to help users understand GitHub codebases.
 
-        ---
-        📄 Code Context:
-        {context}
+Your job is to analyze the following code context and answer the user's question accurately.
 
-        ❓ User Question:
-        {ques}
+---
 
-        ---
+📁 Project Context:
+{context}
 
-        💡 Your Task:
-        - Extract and explain only the relevant code.
-        - Summarize the project layout for general/directory questions.
-        - Be concise and helpful.
-        """
+❓ User Question:
+{ques}
+
+---
+
+🎯 Instructions:
+- Extract and explain only the **relevant** code related to the question.
+- If the question is about **project structure** or file organization, provide a concise summary.
+- For implementation-specific questions, focus only on the **core logic** and avoid unrelated details.
+- When needed, simplify technical terms but preserve accuracy.
+- Be clear, concise, and helpful — like a senior developer reviewing code for a junior.
+
+Respond only based on the available context. If the answer is not in the provided code, say so.
+"""
         stream = llm.invoke([HumanMessage(content=prompt)])
         return {**state, "answer": stream.content.strip()}
 
