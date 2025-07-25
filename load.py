@@ -4,16 +4,18 @@ from langchain.docstore.document import Document
 import aiohttp
 import asyncio
 import base64
-
+from pprint import pprint
 
 async def fetch_github(repo_url, token):
     async with aiohttp.ClientSession() as session:
-        HEADERS = {
+        headers = {
             "Accept": "application/vnd.github.v3+json"
         }
         valid_token = token.strip() if token else None
+        # print(len(valid_token))
+        # pprint(valid_token)
         if valid_token:
-            HEADERS["Authorization"] = f"token {valid_token}"
+            headers["Authorization"] = f"token {valid_token}"
 
         # Extract owner/repo name
         repo_name = repo_url.replace("https://github.com/", "").strip("/")
@@ -26,22 +28,22 @@ async def fetch_github(repo_url, token):
 
         async def fetch_url(session, url):
             try:
-                async with session.get(url, headers=HEADERS) as resp:
+                async with session.get(url, headers=headers) as resp:
                     if resp.status == 200:
                         return await resp.json()
                     elif resp.status == 404:
                         if "Authorization" not in resp.headers or not resp.headers["Authorization"]:
-                            raise FileNotFoundError(f"❌ Repo not found or it may be private. Try providing a GitHub token.\nURL: {url}")
+                            raise FileNotFoundError(f" Repo not found or it may be private. Try providing a GitHub token.\nURL: {url}")
                         else:
-                            raise FileNotFoundError(f"❌ Repo not found. If it's private, ensure your token has access.\nURL: {url}")
+                            raise FileNotFoundError(f" Repo not found or it may be empty. If it's private, ensure your token has access.\nURL: {url}")
 
                     elif resp.status == 403:
                         detail = await resp.text()
-                        raise PermissionError(f"🚫 Access denied (403). Reason: {detail}")
+                        raise PermissionError(f" Access denied (403). Reason: {detail}")
                     else:
-                        raise Exception(f"⚠️ Unexpected status {resp.status} for {url}")
+                        raise Exception(f" Unexpected status {resp.status} for {url}")
             except aiohttp.ClientError as e:
-                raise ConnectionError(f"🌐 Network error: {e}")
+                raise ConnectionError(f" Network error: {e}")
             
         async def fetch_content(session, url):
             items = await fetch_url(session, url)
