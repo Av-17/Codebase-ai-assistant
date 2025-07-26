@@ -31,7 +31,7 @@ if token and username:
     """, unsafe_allow_html=True)
     # print(token,username)
     st.success("🔓 Logged in successfully. Redirecting...")
-    # st.switch_page("pages/bot.py")
+    st.switch_page("pages/bot.py")
     
 
 
