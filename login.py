@@ -23,12 +23,7 @@ username = params.get("username", None)
 if token and username:
     st.session_state.access_token = token
     st.session_state.username = username
-    # Clear token from URL
-    st.markdown("""
-        <script>
-            window.location.href = window.location.origin + window.location.pathname;
-        </script>
-    """, unsafe_allow_html=True)
+    
     # print(token,username)
     st.success("🔓 Logged in successfully. Redirecting...")
     st.switch_page("pages/bot.py")
