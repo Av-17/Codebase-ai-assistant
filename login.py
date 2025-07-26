@@ -32,7 +32,7 @@ if token and username:
     # print(token,username)
     st.success("🔓 Logged in successfully. Redirecting...")
     # st.switch_page("pages/bot.py")
-    st.stop()
+    
 
 
 elif "access_token" in st.session_state:
