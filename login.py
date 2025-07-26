@@ -36,6 +36,9 @@ elif "access_token" in st.session_state:
 
 else:
     st.title("🔐 GitHub OAuth Login")
-    if st.button("🔐 Login with GitHub"):
-        streamlit_js_eval(js_expressions="window.top.location.href = 'https://backend-for-codebase-1.onrender.com/login';")
-        
+    login_url = "https://backend-for-codebase-1.onrender.com/login"
+    st.markdown(f"""
+    <a href="{login_url}" target="_self">
+        <button style="padding: 10px 20px; font-size: 16px;">🔐 Login with GitHub</button>
+    </a>
+""", unsafe_allow_html=True)
